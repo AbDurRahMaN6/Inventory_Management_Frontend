@@ -1,0 +1,6 @@
+.navbar-expand{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    float: center;
+}

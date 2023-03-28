@@ -7,9 +7,13 @@ import { StorageService } from './_services/storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   private roles!: string[];
   isLoggedIn = false;
   showManagerBoard = false;
+  showAdminBoard = false;
   username: string | undefined;
 
   constructor(private storageService: StorageService) { }
@@ -22,6 +26,9 @@ export class AppComponent implements OnInit {
       this.roles = user.roles;
 
       this.showManagerBoard = this.roles.includes('ROLE_MANAGER');
+      this.username = user.username;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.username = user.username;
     }
   }
