@@ -1,0 +1,94 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentDevice.id">
+    <h4>Devices</h4>
+    <div>
+      <label><strong>Model:</strong></label> {{ currentDevice.model }}
+    </div>
+    <div>
+      <label><strong>Type:</strong></label>
+      {{ currentDevice.deviceType }}
+    </div>
+    <div>
+      <label><strong>Status:</strong></label>
+      {{ currentDevice.published ? "Published" : "Pending" }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/devices/{{ currentDevice.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentDevice">
+    <br />
+    <p>Please click on a Devices...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentDevice.id" class="edit-form">
+    <h4>Devices</h4>
+    <form>
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          [(ngModel)]="currentDevice.model"
+          name="model"
+        />
+      </div>
+      <div class="form-group">
+        <label for="type">Device Type</label>
+        <input
+          type="text"
+          class="form-control"
+          id="type"
+          [(ngModel)]="currentDevice.deviceType"
+          name="type"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentDevice.published ? "Published" : "Pending" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentDevice.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentDevice.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteDevice()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateDevice()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentDevice.id">
+    <br />
+    <p>Cannot access this Device...</p>
+  </div>
+</ng-template>
