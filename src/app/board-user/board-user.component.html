@@ -3,14 +3,6 @@
     <div *ngIf="!submitted">
       <div class="form-group">
         <label for="model">Model</label>
-        <!-- <input
-          type="text"
-          class="form-control"
-          id="model"
-          required
-          [(ngModel)]="userDevices.model"
-          name="model"
-        /> -->
         <select class="form-control" id="model" required [(ngModel)]="userDevices.model" name="model" required>
           <option value="" disabled selected>Select your option</option>
           <option value="laptop">Laptop</option>

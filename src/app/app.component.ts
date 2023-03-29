@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   private roles!: string[];
   isLoggedIn = false;
   showManagerBoard = false;
+  showUserBoard = false;
   showAdminBoard = false;
   username: string | undefined;
 
@@ -24,6 +25,9 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       this.roles = user.roles;
+
+      this.showUserBoard = this.roles.includes('ROLE_USER');
+      this.username = user.username;
 
       this.showManagerBoard = this.roles.includes('ROLE_MANAGER');
       this.username = user.username;
