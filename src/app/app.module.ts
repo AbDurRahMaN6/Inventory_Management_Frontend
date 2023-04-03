@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
 
 
@@ -21,6 +21,10 @@ import { MatInputModule } from '@angular/material/input';
 import { AddDevicesComponent } from './add-devices/add-devices.component';
 import { DevicesDetailsComponent } from './devices-details/devices-details.component';
 import { DevicesListComponent } from './devices-list/devices-list.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { UserDevicesListComponent } from './user-devices-list/user-devices-list.component';
+import { ApiInterceptorService } from './_services/api-interceptor.service';
+import { UserDevicesDetailsComponent } from './user-devices-details/user-devices-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { DevicesListComponent } from './devices-list/devices-list.component';
     AddDevicesComponent,
     DevicesDetailsComponent,
     DevicesListComponent,
+    BoardAdminComponent,
+    UserDevicesListComponent,
+    UserDevicesDetailsComponent,
     
   ],
   imports: [
@@ -47,7 +54,11 @@ import { DevicesListComponent } from './devices-list/devices-list.component';
     MatSelectModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ApiInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,14 +4,12 @@ import { Devices } from '../models/devices.model';
 import { DevicesService } from '../_services/devices.service';
 
 @Component({
-  selector: 'app-devices-details',
-  templateUrl: './devices-details.component.html',
-  styleUrls: ['./devices-details.component.css'],
+  selector: 'app-user-devices-details',
+  templateUrl: './user-devices-details.component.html',
+  styleUrls: ['./user-devices-details.component.css']
 })
+export class UserDevicesDetailsComponent implements OnInit {
 
-
-export class DevicesDetailsComponent implements OnInit {
-  
   @Input() viewMode = false;
 
   @Input() currentDevice: Devices = {
@@ -81,12 +79,11 @@ export class DevicesDetailsComponent implements OnInit {
   }
 
   deleteDevice(): void {
-    if(confirm('Are you Delete this device?'))
     this.devicesService.delete(this.currentDevice.id)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/manager/devices']);
+          this.router.navigate(['/devices']);
         },
         error: (e) => console.error(e)
       });

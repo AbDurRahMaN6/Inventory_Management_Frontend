@@ -1,11 +1,16 @@
 <div *ngIf="viewMode; else editable">
   <div *ngIf="currentDevice.id">
-    <h4>Devices</h4>
+    <h4>Devices Details</h4>
+
+    <div>
+      <label><strong>Serial ID:</strong></label> {{ currentDevice.serialId }}
+    </div>
+
     <div>
       <label><strong>Model:</strong></label> {{ currentDevice.model }}
     </div>
     <div>
-      <label><strong>Type:</strong></label>
+      <label><strong>Device Type:</strong></label>
       {{ currentDevice.deviceType }}
     </div>
     <div>
@@ -15,7 +20,7 @@
 
     <a
       class="badge badge-warning"
-      routerLink="/devices/{{ currentDevice.id }}"
+      routerLink="/manager/devices/{{ currentDevice.id }}"
     >
       Edit
     </a>
@@ -29,8 +34,18 @@
 
 <ng-template #editable>
   <div *ngIf="currentDevice.id" class="edit-form">
-    <h4>Devices</h4>
+    <strong><h3>Devices Details</h3></strong>
     <form>
+      <div class="form-group">
+        <label for="model">Serial ID</label>
+        <input
+          type="text"
+          class="form-control"
+          id="serialId"
+          [(ngModel)]="currentDevice.serialId"
+          name="serialId"
+        />
+      </div>
       <div class="form-group">
         <label for="model">Model</label>
         <input
@@ -42,13 +57,13 @@
         />
       </div>
       <div class="form-group">
-        <label for="type">Device Type</label>
+        <label for="deviceType">Device Type</label>
         <input
           type="text"
           class="form-control"
-          id="type"
+          id="deviceType"
           [(ngModel)]="currentDevice.deviceType"
-          name="type"
+          name="deviceType"
         />
       </div>
 
@@ -76,7 +91,8 @@
     <button class="badge badge-danger mr-2" (click)="deleteDevice()">
       Delete
     </button>
-
+    
+  
     <button
       type="submit"
       class="badge badge-success mb-2"
@@ -85,6 +101,14 @@
       Update
     </button>
     <p>{{ message }}</p>
+
+    <button
+      type="submit"
+      class="badge badge-info mb-2"
+      routerLink="../"
+    >
+      Back
+    </button>
   </div>
 
   <div *ngIf="!currentDevice.id">

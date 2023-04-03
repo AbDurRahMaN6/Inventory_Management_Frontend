@@ -2,6 +2,24 @@
   <div class="card card-container mt-5">
     <div class="submit-form">
       <div *ngIf="!submitted">
+
+        <div class="form-group">
+          <label for="model">Serial ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="serialId"
+            required
+            serialId
+            [(ngModel)]="devices.serialId"
+            name="serialId"
+            #serialId="ngModel"
+          />
+          <div class="alert-danger" *ngIf="submitted && serialId.invalid">
+            <div *ngIf="serialId.errors?.['required']">Serial ID is required</div>
+          </div>
+        </div>
+        
         <div class="form-group">
           <label for="model">Model</label>
           <input
@@ -30,14 +48,20 @@
           />
         </div>
 
-        <button (click)="saveDevices()" class="btn btn-success">Submit</button>
+        <div class="subm">
+          <button (click)="saveDevices()" class="btn btn-success">Submit</button>
+        </div>
       </div>
 
       <div *ngIf="submitted">
         <h4>Devices was submitted successfully!</h4>
-        <button class="btn btn-success" (click)="newDevices()">Add</button>
-      </div>
+        <button type="button" class="btn btn-success" (click)="newDevices()">Add</button>  
+      </div>      
     </div>
-    <button type="button" class="btn btn-info" routerLink="../">Back</button>
+    <div class="addBtn">
+      <button type="button" class="btn btn-warning" (click)="newDevices()">Clear</button>
+      <button type="button" class="btn btn-info" routerLink="../">Back</button>
+      <button type="button" class="btn btn-primary" routerLink="../devices">Go to List</button>
+    </div>
   </div>
 </div>

@@ -1,30 +1,47 @@
-<div class="card card-container">
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="model">Model</label>
-        <select class="form-control" id="model" required [(ngModel)]="userDevices.model" name="model" required>
-          <option value="" disabled selected>Select your option</option>
-          <option value="laptop">Laptop</option>
-          <option value="mobile">Mobile</option>
-          <option value="tabs">Tabs</option>
-          <option value="monitor">Monitor</option>
-        </select>
-      </div>
 
-      <div class="form-group">
-        <label for="type">Device Type</label>
+  <div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mt-5 mb-3">
         <input
+          type="text"
           class="form-control"
-          id="type"
-          required
-          [(ngModel)]="userDevices.deviceType"
-          name="type"
-          placeholder="Put a device type"
+          placeholder="Search the Devices"
+          [(ngModel)]="model"
         />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="searchDevice()"
+          >
+            Search
+          </button>
+        </div>
       </div>
-      <button (click)="saveUserDevices()" class="btn btn-success">Submit</button>
     </div>
-  </div>
+    <div class="col-md-6">
+      <h4>Devices List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let device of devices; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveDevices(device, i)"
+        >
+        <strong>Serial ID: </strong>{{ device.serialId}}
+          <br />
+          <strong>Model: </strong>{{ device.model }}
+          <br />
+          <strong>DeviceType: </strong>{{ device.deviceType}}
+          <br />
+          <strong>Status: </strong>{{ currentDevice.published ? "Published" : "Pending" }}
+        </li>
+      </ul>
+    </div>
 
+    <div class="col-md-6">
+      <app-user-devices-details>
+        [viewMode]="true"
+        [currentDevice]="currentDevice"
+      </app-user-devices-details>
+    </div>
   </div>

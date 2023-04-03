@@ -1,18 +1,49 @@
 .card-container{
   max-width: 600px;
-  height: 50vh;
   background-color: #f5f5f5;
   margin-left: 20%;
 }
 
+.form-group{
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
 
-.btn-info{
+input{
+  width: 350px;
+}
+
+.sampleBtn{
+  float: right;
   width: 100px;
   margin-top: 10px;
   margin-bottom: 50px;
-  margin-left: 50px;
 }
+
 .submit-form {
     max-width: 400px;
     margin: auto;
-  }
+}
+
+.addBtn{
+  display: flex;
+  margin-left: 22%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.subm{
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.btn-info{
+  margin-left: 20px;
+}
+
+.btn-primary{
+  margin-left: 20px;
+}
+
