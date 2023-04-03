@@ -97,9 +97,7 @@
           
           <div class="form-group" style="margin-top: 20px;">
             <button class="btn btn-primary btn-block">Sign Up</button>
-          </div>
-          <label>If you have a Account. Please <span><a href="/login" routerLink="login">Login</a></span> here.</label>
-    
+          </div> 
           <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
             Signup failed!<br />{{ errorMessage }}
           </div>

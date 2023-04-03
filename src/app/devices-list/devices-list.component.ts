@@ -17,10 +17,10 @@ export class DevicesListComponent implements OnInit {
   constructor(private devicesService: DevicesService) { }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveDevices();
   }
 
-  retrieveTutorials(): void {
+  retrieveDevices(): void {
     this.devicesService.getAll()
       .subscribe({
         next: (data) => {
@@ -32,7 +32,7 @@ export class DevicesListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
+    this.retrieveDevices();
     this.currentDevice = {};
     this.currentIndex = -1;
   }
@@ -42,22 +42,11 @@ export class DevicesListComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllDevices(): void {
-    this.devicesService.deleteAll()
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.refreshList();
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
   searchDevice(): void {
     this.currentDevice = {};
     this.currentIndex = -1;
 
-    this.devicesService.findByTitle(this.model)
+    this.devicesService.findByDevice(this.model)
       .subscribe({
         next: (data) => {
           this.devices = data;

@@ -1,0 +1,23 @@
+<div *ngIf="viewMode">
+    <div *ngIf="currentDevice.id">
+      <h4>Devices Details</h4>
+  
+      <div>
+        <label><strong>Serial ID:</strong></label> {{ currentDevice.serialId }}
+      </div>
+  
+      <div>
+        <label><strong>Model:</strong></label> {{ currentDevice.model }}
+      </div>
+      <div>
+        <label><strong>Device Type:</strong></label>
+        {{ currentDevice.deviceType }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentDevice.published ? "Published" : "Pending" }}
+      </div>
+    </div>
+  </div>
+
+  

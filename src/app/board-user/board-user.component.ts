@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Devices } from '../models/devices.model';
 import { UserDevices } from '../models/userDevices.model';
+import { DevicesService } from '../_services/devices.service';
 import { UserDevicesService } from '../_services/user-devices.service';
 
 @Component({
@@ -9,120 +10,54 @@ import { UserDevicesService } from '../_services/user-devices.service';
   templateUrl: './board-user.component.html',
   styleUrls: ['./board-user.component.css']
 })
-// export class BoardUserComponent implements OnInit {
-//   deviceModels: string ="";
-//   deviceTypes: string="";
 
+export class BoardUserComponent implements OnInit {
 
-//   constructor(private http:HttpClient){}
+  devices?: Devices[];
+  currentDevice: Devices = {};
+  currentIndex = -1;
+  model = '';
 
-//   ngOnInit() : void {
+  constructor(private devicesService: DevicesService) { }
 
-//   }
-  // Devices = [
-  //   {
-  //     name: 'Laptop',
-  //     subItems: [
-  //       { name: 'HP' },
-  //       { name: 'Dell' },
-  //       { name: 'Acer' },
-  //       { name: 'Samsung' },
-  //       { name: 'Razer' },
-  //       { name: 'Asus' },
-  //       { name: 'Dell' },
-  //       { name: 'Lenovo' },
-  //     ],
-  //   },
-  //   {
-  //     name: 'Mobile',
-  //     subItems: [
-  //       { name: 'Samsung' },
-  //       { name: 'Apple' },
-  //       { name: 'Huawei' },
-  //       { name: 'Nokia' },
-  //       { name: 'Sony' },
-  //       { name: 'LG' },
-  //       { name: 'HTC' },
-  //       { name: 'Motorola' },
-  //     ],
-  //   },
-  //   {
-  //     name: 'Tabs',
-  //     subItems: [
-  //       { name: 'Samsung Galaxy Tab A7' },
-  //       { name: 'Lenovo Tab Yoga Smart Tablet' },
-  //       { name: 'Samsung Galaxy Tab S7' },
-  //       { name: 'Lenovo Tab M10 FHD Plus Tablet' },
-  //     ],
-  //   },
-  // ];
-
-  // selectedItems: any[] | undefined;
-
-
-  // get the selected items and sub-items
-// const selectedSubItems = [];
-// this.selectedItems.forEach((item) => {
-//   if (item.subItems) {
-//     selectedSubItems.push(...item.subItems);
-//   } else {
-//     selectedSubItems.push(item);
-//   }
-// });
-
-// // send the selected sub-items to the backend using HTTP
-// this.http.post('/api/items', selectedSubItems).subscribe(
-//   (response) => {
-//     console.log('success', response);
-//   },
-//   (error) => {
-//     console.error('error', error);
-//   }
-// );
-// }
-
-
-export class BoardUserComponent {
-  devicesLaptop = []
-    userDevices: UserDevices = {
-      model: '',
-      deviceType: '',
-    };
-    submitted = false;
-
-  
-    constructor(private userDevicesService: UserDevicesService ) { }
-  
-    saveUserDevices(): void {
-      const data = {
-        model: this.userDevices.model,
-        deviceType: this.userDevices.deviceType
-      };
-  
-      this.userDevicesService.create(data)
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            this.submitted = true;
-          },
-          error: (e) => console.error(e)
-        });
-    }
-  
-    newUserDevices(): void {
-      this.submitted = false;
-      this.userDevices = {
-        model: '',
-        deviceType: '',
-      };
-    }
-
-    selectLaptop() : void {
-      this.devicesLaptop = [
-        // {"id": 1 , "ItemName": "Dell"},
-        
-      ]
-    }
+  ngOnInit(): void {
+    this.retrieveDevices();
   }
-  
 
+  retrieveDevices(): void {
+    this.devicesService.getAll()
+      .subscribe({
+        next: (data) => {
+          this.devices = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  refreshList(): void {
+    this.retrieveDevices();
+    this.currentDevice = {};
+    this.currentIndex = -1;
+  }
+
+  setActiveDevices(device: Devices, index: number): void {
+    this.currentDevice = device;
+    this.currentIndex = index;
+  }
+
+  searchDevice(): void {
+    this.currentDevice = {};
+    this.currentIndex = -1;
+
+    this.devicesService.findByDevice(this.model)
+      .subscribe({
+        next: (data) => {
+          this.devices = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+}

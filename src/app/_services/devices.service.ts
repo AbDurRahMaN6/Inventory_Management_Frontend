@@ -38,7 +38,7 @@ export class DevicesService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(model: any): Observable<Devices[]> {
+  findByDevice(model: any): Observable<Devices[]> {
     return this.http.get<Devices[]>(`${baseUrl}?model=${model}`);
   }
 }

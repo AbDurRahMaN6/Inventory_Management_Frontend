@@ -3,27 +3,26 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Devices } from '../models/devices.model';
 
-const baseUrl = 'http://localhost:8080/api/users/';
+const baseUrl = 'http://localhost:8080/api/users/devices'
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDevicesService {
+  findByDevice(model: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 
-create(data: any): Observable<any>{
-  return this.http.post(baseUrl + 'devices', data, httpOptions)
-}
 
-
-// getAll(): Observable<Devices[]> {
-//   return this.http.get<Devices[]>(baseUrl);
-// }
+  getAll(): Observable<Devices[]> {
+    return this.http.get<Devices[]>(baseUrl);
+  }
 
 // delete(id: any): Observable<any> {
 //   return this.http.delete(`${baseUrl}/${id}`);
