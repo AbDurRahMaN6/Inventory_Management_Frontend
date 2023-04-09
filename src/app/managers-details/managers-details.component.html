@@ -1,0 +1,82 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentManagerList.username">
+      <h4>Managers Details</h4>
+      <div>
+        <label><strong>Username: </strong></label> {{ currentManagerList.username }}
+      </div>
+  
+      <div>
+        <label><strong>Email:</strong></label> {{ currentManagerList.email }}
+      </div>
+      
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/admin/manager/{{ currentManagerList.username }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentManagerList">
+      <br />
+      <p>Please click on a Managers...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentManagerList.username" class="edit-form">
+      <strong><h3>Managers Details</h3></strong>
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="currentManagerList.username"
+            name="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="currentManagerList.email"
+            name="email"
+          />
+        </div>
+      </form>
+  
+  
+      <button class="badge badge-danger mr-2" (click)="deleteManagerList()">
+        Delete
+      </button>
+      
+    
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateManagersList()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+  
+      <button
+        type="submit"
+        class="badge badge-info mb-2"
+        routerLink="../"
+      >
+        Back
+      </button>
+    </div>
+  
+    <div *ngIf="!currentManagerList.username">
+      <br />
+      <p>Cannot access this Managers...</p>
+    </div>
+  </ng-template>
+  

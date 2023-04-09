@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Devices } from '../models/devices.model';
+import { UsersList } from '../models/usersList.model';
 
 
 
@@ -32,10 +33,6 @@ export class DevicesService {
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
-  }
-
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
   }
 
   findByDevice(model: any): Observable<Devices[]> {

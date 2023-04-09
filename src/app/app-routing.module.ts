@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { UserDevicesListComponent } from './user-devices-list/user-devices-list.component';
+import { UsersDetailsListComponent } from './users-details-list/users-details-list.component';
+import { UsersDetailsComponent } from './users-details/users-details.component';
+import { ManagersDetailsListComponent } from './managers-details-list/managers-details-list.component';
+import { ManagersDetailsComponent } from './managers-details/managers-details.component';
 
 const routes: Routes = [
   {path: "", redirectTo:"login", pathMatch:"full"},
@@ -24,7 +28,13 @@ const routes: Routes = [
   { path: 'manager', component: BoardManagerComponent },
   { path: 'manager/devices', component: DevicesListComponent },
   { path: 'manager/devices/:id', component: DevicesDetailsComponent },
-  { path: 'manager/addDevices', component: AddDevicesComponent }
+  { path: 'manager/addDevices', component: AddDevicesComponent },
+  { path: 'manager/users', component: UsersDetailsListComponent},
+  { path: 'manager/users/:username', component: UsersDetailsComponent },
+  { path: 'admin/manager', component: ManagersDetailsListComponent },
+  { path: 'admin/manager/:username', component: ManagersDetailsComponent },
+  { path: 'admin/users', component: UsersDetailsListComponent},
+  { path: 'admin/users/:username', component: UsersDetailsComponent}
 ];
 
 @NgModule({

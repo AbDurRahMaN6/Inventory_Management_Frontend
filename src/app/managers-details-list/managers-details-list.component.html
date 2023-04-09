@@ -1,0 +1,23 @@
+<div class="list row">
+    
+    <div class="col-md-8">
+      <h4>Managers List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let manager of managers; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivemanagers(manager, i)"
+        >
+          {{ manager.username }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 mt-5">
+      <app-managers-details
+        [viewMode]="true"
+        [currentManagerList]="currentManagers"
+      >
+    </app-managers-details>
+    </div>
+  </div>
