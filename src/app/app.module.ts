@@ -25,6 +25,10 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { UserDevicesListComponent } from './user-devices-list/user-devices-list.component';
 import { ApiInterceptorService } from './_services/api-interceptor.service';
 import { UserDevicesDetailsComponent } from './user-devices-details/user-devices-details.component';
+import { UsersDetailsListComponent } from './users-details-list/users-details-list.component';
+import { UsersDetailsComponent } from './users-details/users-details.component';
+import { ManagersDetailsComponent } from './managers-details/managers-details.component';
+import { ManagersDetailsListComponent } from './managers-details-list/managers-details-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,12 @@ import { UserDevicesDetailsComponent } from './user-devices-details/user-devices
     BoardAdminComponent,
     UserDevicesListComponent,
     UserDevicesDetailsComponent,
-    
+    UserDevicesDetailsComponent,
+    UserDevicesListComponent,
+    UsersDetailsListComponent,
+    UsersDetailsComponent,
+    ManagersDetailsComponent,
+    ManagersDetailsListComponent,    
   ],
   imports: [
     BrowserModule,

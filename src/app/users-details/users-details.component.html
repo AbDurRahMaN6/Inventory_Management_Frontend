@@ -1,0 +1,81 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentUsers.username">
+      <h4>Users Details</h4>
+      <div>
+        <label><strong>Username:</strong></label> {{ currentUsers.username }}
+      </div>
+  
+      <div>
+        <label><strong>Email:</strong></label> {{ currentUsers.email }}
+      </div>
+      
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/manager/users/{{ currentUsers.username }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentUsers">
+      <br />
+      <p>Please click on a Users...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentUsers.username" class="edit-form">
+      <strong><h3>Users Details</h3></strong>
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            [(ngModel)]="currentUsers.username"
+            name="username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentUsers.email"
+            name="email"
+          />
+        </div>
+      </form>
+  
+      <button class="badge badge-danger mr-2" (click)="deleteUserDetails()">
+        Delete
+      </button>
+      
+    
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateUserDetails()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+  
+      <button
+        type="submit"
+        class="badge badge-info mb-2"
+        routerLink="../"
+      >
+        Back
+      </button>
+    </div>
+  
+    <div *ngIf="!currentUsers.username">
+      <br />
+      <p>Cannot access this Users...</p>
+    </div>
+  </ng-template>
+  
