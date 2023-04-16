@@ -29,6 +29,12 @@ import { UsersDetailsListComponent } from './users-details-list/users-details-li
 import { UsersDetailsComponent } from './users-details/users-details.component';
 import { ManagersDetailsComponent } from './managers-details/managers-details.component';
 import { ManagersDetailsListComponent } from './managers-details-list/managers-details-list.component';
+import { UsersDetailsAdminListComponent } from './users-details-admin-list/users-details-admin-list.component';
+import { UsersAdminDetailsComponent } from './users-admin-details/users-admin-details.component';
+import { MyDevicesComponent } from './my-devices/my-devices.component';
+import { AddUsersComponent } from './add-users/add-users.component';
+import { AuthGuard } from './_services/guard/auth.guard';
+import { UsersAdminDetailsListComponent } from './users-admin-details-list/users-admin-details-list.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,12 @@ import { ManagersDetailsListComponent } from './managers-details-list/managers-d
     UsersDetailsListComponent,
     UsersDetailsComponent,
     ManagersDetailsComponent,
-    ManagersDetailsListComponent,    
+    ManagersDetailsListComponent,
+    UsersDetailsAdminListComponent,
+    UsersAdminDetailsComponent,
+    MyDevicesComponent,
+    AddUsersComponent,
+    UsersAdminDetailsListComponent,    
   ],
   imports: [
     BrowserModule,
@@ -63,11 +74,15 @@ import { ManagersDetailsListComponent } from './managers-details-list/managers-d
     MatSelectModule,
     MatFormFieldModule
   ],
-  providers: [{
+  providers: 
+  [{
     provide: HTTP_INTERCEPTORS,
     useClass: ApiInterceptorService,
     multi: true
-  }],
-  bootstrap: [AppComponent]
+  },
+  AuthGuard
+],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

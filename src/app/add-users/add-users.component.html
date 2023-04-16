@@ -1,0 +1,201 @@
+<!-- <div>
+    <div class="card card-container mt-5">
+      <div class="submit-form">
+        <div *ngIf="!submitted">
+  
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              required
+              username
+              [(ngModel)]="users.username"
+              name="username"
+              #username="ngModel"
+            />
+            <div class="alert-danger" *ngIf="submitted && username.invalid">
+              <div *ngIf="username.errors?.['required']">Username is required</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              required
+              email
+              [(ngModel)]="users.email"
+              name="email"
+              #email="ngModel"
+            />
+            <div class="alert-danger" *ngIf="submitted && email.invalid">
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              id="password"
+              required
+              password
+              [(ngModel)]="users.password"
+              name="password"
+              #password="ngModel"
+            />
+            <div class="alert-danger" *ngIf="submitted && password.invalid">
+              <div *ngIf="password.errors?.['required']">Password is required</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="roles">Select Roles</label>
+            <input
+              type="rolling"
+              class="form-control"
+              id="rolling"
+              required
+              roles
+              [(ngModel)]="users.rolling"
+              name="rolling"
+              #rolling="ngModel"
+            />
+            <div class="alert-danger" *ngIf="submitted && rolling.invalid">
+              <div *ngIf="rolling.errors?.['required']">Roles is required</div>
+            </div>
+          </div>
+  
+  
+          <div class="subm">
+            <button (click)="saveUsers()" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+  
+        <div *ngIf="submitted">
+          <h4>Users was Registered successfully!</h4>
+          <button type="button" class="btn btn-success" (click)="newUsers()">Add</button>  
+        </div>      
+      </div>
+      <div class="addBtn">
+        <button type="button" class="btn btn-warning" (click)="newUsers()">Clear</button>
+        <button type="button" class="btn btn-info" routerLink="../">Back</button>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div class="container">
+    <div class="col-6">
+      <div class="col-md-12">
+        <div class="card card-container">
+          <form
+            *ngIf="!isUsersSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && saveUsers()"
+            #f="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="form.username"
+                required
+                minlength="3"
+                maxlength="20"
+                #username="ngModel"
+                placeholder="Enter your username"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors?.['required']">Username is required</div>
+                <div *ngIf="username.errors?.['minlength']">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors?.['maxlength']">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                email
+                #email="ngModel"
+                placeholder="Enter your email"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="8"
+                maxlength="20"
+                #password="ngModel"
+                placeholder="Enter your password"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors?.['required']">Password is required</div>
+                <div *ngIf="password.errors?.['minlength']">
+                  Password must be at least 8 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Select Role</label>
+              <input
+                type="text"
+                class="form-control"
+                name="rolling"
+                [(ngModel)]="form.rolling"
+                required
+                minlength="8"
+                maxlength="20"
+                #rolling="ngModel"
+                placeholder="Enter your rolling"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && rolling.invalid">
+                <div *ngIf="rolling.errors?.['required']">Role is required</div>
+              </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 20px;">
+              <button class="btn btn-primary btn-block">Create User</button>
+            </div> 
+            <div class="alert alert-warning" *ngIf="f.submitted && isUserFailed">
+              Created failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+      
+          <div class="alert alert-success" *ngIf="isUsersSuccessful">
+            Your Create User is successful!
+          </div>
+        </div>
+      </div>
+  
+  
+  
+    </div>
+  </div>

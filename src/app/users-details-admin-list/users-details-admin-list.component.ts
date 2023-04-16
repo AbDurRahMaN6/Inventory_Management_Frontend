@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersList } from '../models/usersList.model';
+import { Component , OnInit} from '@angular/core';
 import { UsersDetailsListService } from '../_services/users-details-list.service';
+import { UsersList } from '../models/usersList.model';
 
 @Component({
-  selector: 'app-users-details-list',
-  templateUrl: './users-details-list.component.html',
-  styleUrls: ['./users-details-list.component.css']
+  selector: 'app-users-details-admin-list',
+  templateUrl: './users-details-admin-list.component.html',
+  styleUrls: ['./users-details-admin-list.component.css']
 })
-export class UsersDetailsListComponent implements OnInit {
+export class UsersDetailsAdminListComponent implements OnInit {
 
   usersDetails?: UsersList[];
   currentUsers: UsersList = {};
@@ -15,6 +15,7 @@ export class UsersDetailsListComponent implements OnInit {
   model = '';
 
   constructor(private userDetailsService: UsersDetailsListService){}
+
 
   ngOnInit(): void {
     this.retrieveUsersDetails();
@@ -55,7 +56,5 @@ export class UsersDetailsListComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
-  
 
 }

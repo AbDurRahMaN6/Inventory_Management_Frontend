@@ -32,4 +32,9 @@ export class AuthService {
       rolling: user.rolling
     }, httpOptions);
   }
+
+  isLoggedIn(): boolean {
+    // Implement your login check logic here
+    return true; // For demo purposes, always return true
+  }
 }

@@ -18,6 +18,10 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3 mt-5">
+      <button type="button" class="btn btn-success ml-5" routerLink="myDevice">Show My Device</button>
+
+    </div>
     <div class="col-md-6">
       <h4>Devices List</h4>
       <ul class="list-group">
@@ -33,7 +37,7 @@
           <br />
           <strong>DeviceType: </strong>{{ device.deviceType}}
           <br />
-          <strong>Status: </strong>{{ currentDevice.published ? "Published" : "Pending" }}
+          <strong>Status: </strong>{{ currentDevice.available ? "Available" : "Not Available" }}
         </li>
       </ul>
     </div>

@@ -13,9 +13,10 @@ export class ManagersDetailsComponent implements OnInit {
   @Input() viewMode = false;
 
   @Input() currentManagerList: UsersList = {
-    username:'',
+    id:'',
     email: '',
     roles: '',
+    password:'',
   };
 
   message = '';
@@ -26,16 +27,16 @@ export class ManagersDetailsComponent implements OnInit {
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
-      this.getManager(this.route.snapshot.params["username"]);
+      this.getManager(this.route.snapshot.params["id"]);
     }
   }
 
-  getManager(username: string):void{
-    this.managersDetailsService.getManagers(username)
+  getManager(id: string):void{
+    this.managersDetailsService.getManagers(id)
       .subscribe({
-        next: (userManager) => {
-          this.currentManagerList = userManager;
-          console.log(userManager);
+        next: (managersLog) => {
+          this.currentManagerList = managersLog;
+          console.log(managersLog);
         },
         error: (e) => console.error(e)
       });
@@ -44,7 +45,7 @@ export class ManagersDetailsComponent implements OnInit {
   updateManagersList(): void {
     this.message = '';
 
-    this.managersDetailsService.updateManagers(this.currentManagerList.username, this.currentManagerList)
+    this.managersDetailsService.updateManagers(this.currentManagerList.id, this.currentManagerList)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -55,12 +56,12 @@ export class ManagersDetailsComponent implements OnInit {
   }
 
   deleteManagerList(): void {
-    if(confirm('Are you Delete this device?'))
-    this.managersDetailsService.deleteManagers(this.currentManagerList.username)
+    if(confirm('Are you Delete this manager?'))
+    this.managersDetailsService.deleteManagers(this.currentManagerList.id)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/manager/devices']);
+          this.router.navigate(['/admin/managers']);
         },
         error: (e) => console.error(e)
       });

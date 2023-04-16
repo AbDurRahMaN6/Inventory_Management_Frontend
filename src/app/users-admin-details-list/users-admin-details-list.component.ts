@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UsersList } from '../models/usersList.model';
 import { UsersDetailsListService } from '../_services/users-details-list.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users-details-list',
-  templateUrl: './users-details-list.component.html',
-  styleUrls: ['./users-details-list.component.css']
+  selector: 'app-users-admin-details-list',
+  templateUrl: './users-admin-details-list.component.html',
+  styleUrls: ['./users-admin-details-list.component.css']
 })
-export class UsersDetailsListComponent implements OnInit {
+export class UsersAdminDetailsListComponent implements OnInit {
 
   usersDetails?: UsersList[];
   currentUsers: UsersList = {};
@@ -17,27 +18,27 @@ export class UsersDetailsListComponent implements OnInit {
   constructor(private userDetailsService: UsersDetailsListService){}
 
   ngOnInit(): void {
-    this.retrieveUsersDetails();
+    this.retrieveAdminUsersDetails();
   }
 
-  retrieveUsersDetails(): void {
-    this.userDetailsService.getAllUsers()
+  retrieveAdminUsersDetails(): void {
+    this.userDetailsService.getAllAdminUsers()
       .subscribe({
-        next: (usersLog) => {
-          this.usersDetails = usersLog;
-          console.log(usersLog);
+        next: (usersAdminLog) => {
+          this.usersDetails = usersAdminLog;
+          console.log(usersAdminLog);
         },
         error: (e) => console.error(e)
       });
   }
 
   refreshListUsers(): void {
-    this.retrieveUsersDetails();
+    this.retrieveAdminUsersDetails();
     this.currentUsers = {};
     this.currentIndex = -1;
   }
 
-  setActiveUsersDetails(user: UsersList, index: number): void {
+  setActiveAdminUsersDetails(user: UsersList, index: number): void {
     this.currentUsers = user;
     this.currentIndex = index;
   }

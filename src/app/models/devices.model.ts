@@ -3,5 +3,5 @@ export class Devices {
     serialId?: string;
     model?: string;
     deviceType?: string;
-    published?: boolean;
+    available?: boolean;
 }

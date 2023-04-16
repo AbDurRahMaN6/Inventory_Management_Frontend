@@ -15,26 +15,34 @@ import { UsersDetailsListComponent } from './users-details-list/users-details-li
 import { UsersDetailsComponent } from './users-details/users-details.component';
 import { ManagersDetailsListComponent } from './managers-details-list/managers-details-list.component';
 import { ManagersDetailsComponent } from './managers-details/managers-details.component';
+import { MyDevicesComponent } from './my-devices/my-devices.component';
+import { AddUsersComponent } from './add-users/add-users.component';
+import { AuthGuard } from './_services/guard/auth.guard';
+import { UsersAdminDetailsComponent } from './users-admin-details/users-admin-details.component';
+import { UsersAdminDetailsListComponent } from './users-admin-details-list/users-admin-details-list.component';
 
 const routes: Routes = [
-  {path: "", redirectTo:"login", pathMatch:"full"},
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo:'login', pathMatch:'full'},
+  { path: '', component: LoginComponent, canActivate: [AuthGuard] },
+  // { path: '', component: LoginComponent, canActivate: [() => AuthGuard.prototype.canActivate] },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'admin', component:BoardAdminComponent },
   { path: 'user', component: BoardUserComponent },
-  { path: 'user/devices', component: UserDevicesListComponent },
+  { path: 'user/myDevice', component: MyDevicesComponent },
   { path: 'manager', component: BoardManagerComponent },
   { path: 'manager/devices', component: DevicesListComponent },
   { path: 'manager/devices/:id', component: DevicesDetailsComponent },
   { path: 'manager/addDevices', component: AddDevicesComponent },
+  { path: 'manager/users/addUser', component: AddUsersComponent},
   { path: 'manager/users', component: UsersDetailsListComponent},
-  { path: 'manager/users/:username', component: UsersDetailsComponent },
+  { path: 'manager/users/:id', component: UsersDetailsComponent },
   { path: 'admin/manager', component: ManagersDetailsListComponent },
-  { path: 'admin/manager/:username', component: ManagersDetailsComponent },
-  { path: 'admin/users', component: UsersDetailsListComponent},
-  { path: 'admin/users/:username', component: UsersDetailsComponent}
+  { path: 'admin/manager/:id', component: ManagersDetailsComponent },
+  { path: 'admin/users', component: UsersAdminDetailsListComponent},
+  { path: 'admin/users/:id', component: UsersAdminDetailsComponent}
 ];
 
 @NgModule({
