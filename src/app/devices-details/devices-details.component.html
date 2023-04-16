@@ -14,7 +14,7 @@
     </div>
     <div>
       <label><strong>Status:</strong></label>
-      {{ currentDevice.published ? "Published" : "Pending" }}
+      {{ currentDevice.available ? "Available" : "Not Available" }}
     </div>
 
     <a
@@ -68,23 +68,23 @@
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentDevice.published ? "Published" : "Pending" }}
+        {{ currentDevice.available ? "Available" : "Not Available" }}
       </div>
     </form>
 
     <button
       class="badge badge-primary mr-2"
-      *ngIf="currentDevice.published"
-      (click)="updatePublished(false)"
+      *ngIf="currentDevice.available"
+      (click)="updateAvailable(false)"
     >
-      UnPublish
+      Not Available
     </button>
     <button
-      *ngIf="!currentDevice.published"
+      *ngIf="!currentDevice.available"
       class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
+      (click)="updateAvailable(true)"
     >
-      Publish
+    Available
     </button>
 
     <button class="badge badge-danger mr-2" (click)="deleteDevice()">

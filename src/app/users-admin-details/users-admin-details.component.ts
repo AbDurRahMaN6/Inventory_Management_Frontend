@@ -4,11 +4,11 @@ import { UsersDetailsListService } from '../_services/users-details-list.service
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users-details',
-  templateUrl: './users-details.component.html',
-  styleUrls: ['./users-details.component.css']
+  selector: 'app-users-admin-details',
+  templateUrl: './users-admin-details.component.html',
+  styleUrls: ['./users-admin-details.component.css']
 })
-export class UsersDetailsComponent implements OnInit {
+export class UsersAdminDetailsComponent implements OnInit {
 
   @Input() viewMode = false;
 
@@ -30,25 +30,25 @@ export class UsersDetailsComponent implements OnInit {
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
-      this.getUserList(this.route.snapshot.params["id"]);
+      this.getAdminUserList(this.route.snapshot.params["id"]);
     }    
   }
 
-  getUserList(id: string): void {
-    this.userDetailsService.getUsers(id)
+  getAdminUserList(id: string): void {
+    this.userDetailsService.getAdminUsers(id)
       .subscribe({
-        next: (usersLog) => {
-          this.currentUsers = usersLog;
-          console.log(usersLog);
+        next: (usersAdminLog) => {
+          this.currentUsers = usersAdminLog;
+          console.log(usersAdminLog);
         },
         error: (e) => console.error(e)
       });
   }
 
-  updateUserDetails(): void {
+  updateAdminUserDetails(): void {
     this.message = '';
 
-    this.userDetailsService.updateUsers(this.currentUsers.id, this.currentUsers)
+    this.userDetailsService.updateAdminUsers(this.currentUsers.id, this.currentUsers)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -58,13 +58,13 @@ export class UsersDetailsComponent implements OnInit {
       });
   }
 
-  deleteUserDetails(): void {
+  deleteAdminUserDetails(): void {
     if(confirm('Are you Delete this User?'))
-    this.userDetailsService.deleteUsers(this.currentUsers.id)
+    this.userDetailsService.deleteAdminUsers(this.currentUsers.id)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/manager/users']);
+          this.router.navigate(['/admin/users']);
         },
         error: (e) => console.error(e)
       });

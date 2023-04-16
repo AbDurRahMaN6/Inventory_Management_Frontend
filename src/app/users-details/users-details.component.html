@@ -1,5 +1,5 @@
 <div *ngIf="viewMode; else editable">
-    <div *ngIf="currentUsers.username">
+    <div *ngIf="currentUsers.id">
       <h4>Users Details</h4>
       <div>
         <label><strong>Username:</strong></label> {{ currentUsers.username }}
@@ -12,7 +12,7 @@
   
       <a
         class="badge badge-warning"
-        routerLink="/manager/users/{{ currentUsers.username }}"
+        routerLink="/manager/users/{{ currentUsers.id }}"
       >
         Edit
       </a>
