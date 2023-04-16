@@ -20,6 +20,8 @@ import { AddUsersComponent } from './add-users/add-users.component';
 import { AuthGuard } from './_services/guard/auth.guard';
 import { UsersAdminDetailsComponent } from './users-admin-details/users-admin-details.component';
 import { UsersAdminDetailsListComponent } from './users-admin-details-list/users-admin-details-list.component';
+import { AdminGuard } from './_services/guard/admin.guard';
+import { UserGuard } from './_services/guard/user.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,18 +29,26 @@ const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [AuthGuard] },
   // { path: '', component: LoginComponent, canActivate: [() => AuthGuard.prototype.canActivate] },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'admin', component:BoardAdminComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'user/myDevice', component: MyDevicesComponent },
-  { path: 'manager', component: BoardManagerComponent },
+  {path : 'manager',component:BoardManagerComponent, canActivate:[AuthGuard]},
+  // {path : 'manager/addDevices', component:AddDevicesComponent, canActivate:[AuthGuard]},
+  // {path : 'manager/users/addUser', component:AddUsersComponent, canActivate:[AuthGuard]},
+  // { path: 'manager', component: BoardManagerComponent },
   { path: 'manager/devices', component: DevicesListComponent },
   { path: 'manager/devices/:id', component: DevicesDetailsComponent },
   { path: 'manager/addDevices', component: AddDevicesComponent },
   { path: 'manager/users/addUser', component: AddUsersComponent},
   { path: 'manager/users', component: UsersDetailsListComponent},
   { path: 'manager/users/:id', component: UsersDetailsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+
+
+  {path : 'user', component: BoardUserComponent, canLoad:[UserGuard]},
+  // { path: 'user', component: BoardUserComponent },
+  { path: 'user/myDevice', component: MyDevicesComponent },
+
+  {path : 'admin', component:BoardAdminComponent, canLoad:[AdminGuard]},
+  // { path: 'admin', component:BoardAdminComponent },
   { path: 'admin/manager', component: ManagersDetailsListComponent },
   { path: 'admin/manager/:id', component: ManagersDetailsComponent },
   { path: 'admin/users', component: UsersAdminDetailsListComponent},
