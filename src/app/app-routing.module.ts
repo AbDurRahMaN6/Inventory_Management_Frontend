@@ -25,34 +25,35 @@ import { UserGuard } from './_services/guard/user.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo:'login', pathMatch:'full'},
-  { path: '', component: LoginComponent, canActivate: [AuthGuard] },
+  // { path: '', redirectTo:'login', pathMatch:'full'},
+  { path: '', component: LoginComponent },
   // { path: '', component: LoginComponent, canActivate: [() => AuthGuard.prototype.canActivate] },
-  { path: 'home', component: HomeComponent },
-  {path : 'manager',component:BoardManagerComponent, canActivate:[AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
+  { path : 'manager',component:BoardManagerComponent, canActivate:[AuthGuard]},
+  
   // {path : 'manager/addDevices', component:AddDevicesComponent, canActivate:[AuthGuard]},
   // {path : 'manager/users/addUser', component:AddUsersComponent, canActivate:[AuthGuard]},
   // { path: 'manager', component: BoardManagerComponent },
-  { path: 'manager/devices', component: DevicesListComponent },
-  { path: 'manager/devices/:id', component: DevicesDetailsComponent },
-  { path: 'manager/addDevices', component: AddDevicesComponent },
-  { path: 'manager/users/addUser', component: AddUsersComponent},
-  { path: 'manager/users', component: UsersDetailsListComponent},
-  { path: 'manager/users/:id', component: UsersDetailsComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'manager/devices', component: DevicesListComponent, canActivate:[AuthGuard] },
+  { path: 'manager/devices/:id', component: DevicesDetailsComponent, canActivate:[AuthGuard] },
+  { path: 'manager/addDevices', component: AddDevicesComponent, canActivate:[AuthGuard] },
+  { path: 'manager/users/addUser', component: AddUsersComponent, canActivate:[AuthGuard]},
+  { path: 'manager/users', component: UsersDetailsListComponent, canActivate:[AuthGuard]},
+  { path: 'manager/users/:id', component: UsersDetailsComponent, canActivate:[AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate:[AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
 
 
-  {path : 'user', component: BoardUserComponent, canLoad:[UserGuard]},
-  // { path: 'user', component: BoardUserComponent },
-  { path: 'user/myDevice', component: MyDevicesComponent },
+  // {path : 'user', component: BoardUserComponent, canLoad:[UserGuard]},
+  { path: 'user', component: BoardUserComponent, canActivate:[AuthGuard] },
+  { path: 'user/myDevice', component: MyDevicesComponent, canActivate:[AuthGuard] },
 
-  {path : 'admin', component:BoardAdminComponent, canLoad:[AdminGuard]},
-  // { path: 'admin', component:BoardAdminComponent },
-  { path: 'admin/manager', component: ManagersDetailsListComponent },
-  { path: 'admin/manager/:id', component: ManagersDetailsComponent },
-  { path: 'admin/users', component: UsersAdminDetailsListComponent},
-  { path: 'admin/users/:id', component: UsersAdminDetailsComponent}
+  // {path : 'admin', component:BoardAdminComponent, canLoad:[AdminGuard]},
+  { path: 'admin', component:BoardAdminComponent, canActivate:[AuthGuard] },
+  { path: 'admin/managers', component: ManagersDetailsListComponent, canActivate:[AuthGuard] },
+  { path: 'admin/managers/:id', component: ManagersDetailsComponent, canActivate:[AuthGuard] },
+  { path: 'admin/users', component: UsersAdminDetailsListComponent, canActivate:[AuthGuard]},
+  { path: 'admin/users/:id', component: UsersAdminDetailsComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

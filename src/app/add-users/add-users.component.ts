@@ -18,7 +18,6 @@ export class AddUsersComponent implements OnInit {
     email: '',
     password: '',
     roles: '',
-    rolling:'',
   };
   submitted = false;
 
@@ -39,61 +38,5 @@ export class AddUsersComponent implements OnInit {
       }
     );
   }
-
-  // saveUsers(): void {
-    // this.usersDetailsListService.createUsers(this.form).subscribe(
-    //   usersLog => {
-    //     console.log(usersLog);
-    //     this.isUsersSuccessful = true;
-    //     this.isUserFailed = false;
-    //   },
-    //   err => {
-    //     this.errorMessage = err.error.message;
-    //     this.isUserFailed = true;
-    //   }
-    // )
-  //   const usersLog = {
-  //     username: this.users.username,
-  //     email: this.users.email,
-  //     password: this.users.password,
-  //     roles: this.users.roles,
-  //     rolling: this.users.rolling
-  //   };
-
-  //   this.usersDetailsListService.createUsers(usersLog)
-  //     .subscribe({
-  //       next: (res) => {
-  //         console.log(res);
-  //         this.submitted = true;
-  //       },
-  //       error: (e) => console.error(e)
-  //     });
-  // }
-
-  // newUsers(): void {
-  //   this.submitted = false;
-  //   this.users = {
-  //     username:'',
-  //     email: '',
-  //     password: '',
-  //     roles: '',
-  //     rolling:''
-  //   };
-  // }
-
-  // onSubmitUsers(): void {
-  //   this.usersDetailsListService.createUsers(this.form).subscribe(
-  //     usersLog => {
-  //       console.log(usersLog);
-  //       this.isUsersSuccessful = true;
-  //       this.isUserFailed = false;
-  //     },
-  //     err => {
-  //       this.errorMessage = err.error.message;
-  //       this.isUserFailed = true;
-  //     }
-  //   );
-  // }
-
 
 }

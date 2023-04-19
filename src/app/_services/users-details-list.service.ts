@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersList } from '../models/usersList.model';
+import { Devices } from '../models/devices.model';
 
 
 
@@ -30,6 +31,10 @@ export class UsersDetailsListService {
     return this.http.put(`${baseUrl+ `manager/users`}/${id}`, usersLog);
   }
 
+  updateUsersDetailsList(id: any, usersLog: any): Observable<any> {
+    return this.http.put(`${baseUrl+ `manager/devices`}/${id}`, usersLog);
+  }
+
   deleteUsers(id: any): Observable<any> {
     return this.http.delete(`${baseUrl+ `manager/users`}/${id}`);
   }
@@ -38,9 +43,14 @@ export class UsersDetailsListService {
     return this.http.get<UsersList[]>(`${baseUrl + `manager/users`}?username=${username}`);
   }
 
-  // createUsers(usersLog: any): Observable<any> {
-  //   return this.http.post(baseUrl + `manager/users`, usersLog);
-  // }
+  createUserDevice(id: any, device: Devices): Observable<Devices> {
+    return this.http.post<Devices>(`${baseUrl + `user/${id}/device`}`, device);
+  }
+
+  getUserDevices(id: any,): Observable<Devices[]> {
+    return this.http.get<Devices[]>(`${baseUrl + `user/${id}/device`}`);
+  }
+
 
   createUsers(user: {
     username: any; email: any; password: any; rolling: any, roles: any
@@ -68,6 +78,14 @@ export class UsersDetailsListService {
 
   deleteAdminUsers(id: any): Observable<any> {
     return this.http.delete(`${baseUrl+ `admin/users`}/${id}`);
+  }
+
+  getAvailableDevices(id: any): Observable<Devices[]> {
+    let params = new HttpParams();
+    if (id) {
+      params = params.append('id', id);
+    }
+    return this.http.get<Devices[]>(`${baseUrl + `user/myDevice`}`, { params });
   }
 
   
