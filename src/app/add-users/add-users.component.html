@@ -163,23 +163,6 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="password">Select Role</label>
-              <input
-                type="text"
-                class="form-control"
-                name="rolling"
-                [(ngModel)]="form.rolling"
-                required
-                minlength="8"
-                maxlength="20"
-                #rolling="ngModel"
-                placeholder="Enter your rolling"
-              />
-              <div class="alert-danger" *ngIf="f.submitted && rolling.invalid">
-                <div *ngIf="rolling.errors?.['required']">Role is required</div>
-              </div>
-            </div>
             
             <div class="form-group" style="margin-top: 20px;">
               <button class="btn btn-primary btn-block">Create User</button>

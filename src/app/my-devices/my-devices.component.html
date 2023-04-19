@@ -1,1 +1,30 @@
-<p>my-devices works!</p>
+<h2 style="margin-top: 10px">User Device List</h2>
+<table class="table">
+  <thead>
+    <tr style="margin-left: 20px">
+      <th>Serial ID</th>
+      <th>Device Model</th>
+      <th>Device Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let device of usersDevices; let i = index" [class.active]="i == currentIndex"
+    (click)="setActiveUsersDevices(device, i)">
+      <td>{{ device.serialId }}</td>
+      <td>{{ device.model }}</td>
+      <td>{{ device.deviceType }}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let device of usersDevices; let i = index"
+    [class.active]="i == currentIndex"
+    (click)="setActiveUsersDevices(device, i)"
+  >
+    {{ device.serialId }}
+    {{ device.model }}
+    {{ device.deviceType }}
+  </li>
+</ul> -->

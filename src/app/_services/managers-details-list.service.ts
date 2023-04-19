@@ -26,7 +26,7 @@ export class ManagersDetailsListService {
   }
 
   deleteManagers(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl+ `admin/mangers`}/${id}`);
+    return this.http.delete(`${baseUrl+ `admin/managers`}/${id}`);
   }
 
 }

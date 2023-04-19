@@ -4,4 +4,5 @@ export class Devices {
     model?: string;
     deviceType?: string;
     available?: boolean;
+    username?: string;
 }

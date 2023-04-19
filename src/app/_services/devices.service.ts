@@ -31,6 +31,7 @@ export class DevicesService {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
+
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
@@ -38,4 +39,5 @@ export class DevicesService {
   findByDevice(model: any): Observable<Devices[]> {
     return this.http.get<Devices[]>(`${baseUrl}?model=${model}`);
   }
+
 }

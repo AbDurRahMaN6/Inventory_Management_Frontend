@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Devices } from '../models/devices.model';
 
-const baseUrl = 'http://localhost:8080/api/users/devices'
+const baseUrl = 'http://localhost:8080/api/users/'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,21 +14,26 @@ const httpOptions = {
 })
 export class UserDevicesService {
   findByDevice(model: string) {
-    throw new Error('Method not implemented.');
   }
 
   constructor(private http: HttpClient) { }
 
 
-  getAll(): Observable<Devices[]> {
-    return this.http.get<Devices[]>(baseUrl);
+  getAllDevices(): Observable<Devices[]> {
+    return this.http.get<Devices[]>(`${baseUrl + `/devices`}`);
   }
 
-// delete(id: any): Observable<any> {
-//   return this.http.delete(`${baseUrl}/${id}`);
-// }
+  getUsersDevices(id: any): Observable<Devices[]> {
+    return this.http.get<Devices[]>(`${baseUrl+ `myDevice`}/${id}`);
+  }
 
-// deleteAll(): Observable<any> {
-//   return this.http.delete(baseUrl);
-// }
+
+  // getAvailableDevices(id: any): Observable<Devices[]> {
+  //   let params = new HttpParams();
+  //   if (id) {
+  //     params = params.append('id', id);
+  //   }
+  //   return this.http.get<Devices[]>(`${baseUrl + `/myDevice`}`, { params });
+  // }
+
 }

@@ -18,7 +18,7 @@ export class BoardUserComponent implements OnInit {
   currentIndex = -1;
   model = '';
 
-  constructor(private devicesService: DevicesService) { }
+  constructor(private devicesService: DevicesService, private userDevicesService: UserDevicesService) { }
 
   ngOnInit(): void {
     this.retrieveDevices();
