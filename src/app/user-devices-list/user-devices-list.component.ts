@@ -17,13 +17,9 @@ export class UserDevicesListComponent implements OnInit {
   constructor(private userDevicesService: UserDevicesService) { }
 
   ngOnInit(): void {
-    // this.retrieveUserDevices();
+
   }
-
-  
-
   refreshList(): void {
-    // this.retrieveUserDevices();
     this.currentUserDevice = {};
     this.currentUserIndex = -1;
   }
@@ -32,7 +28,4 @@ export class UserDevicesListComponent implements OnInit {
     this.currentUserDevice = device;
     this.currentUserIndex = index;
   }
-
-
-
 } 

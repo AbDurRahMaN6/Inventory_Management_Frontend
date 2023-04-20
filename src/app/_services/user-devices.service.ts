@@ -23,17 +23,8 @@ export class UserDevicesService {
     return this.http.get<Devices[]>(`${baseUrl + `/devices`}`);
   }
 
-  getUsersDevices(id: any): Observable<Devices[]> {
-    return this.http.get<Devices[]>(`${baseUrl+ `myDevice`}/${id}`);
+  getUsersDevices(username: string): Observable<Devices[]> {
+    return this.http.get<Devices[]>(`${baseUrl + `myDevice`}/${username}`);
   }
-
-
-  // getAvailableDevices(id: any): Observable<Devices[]> {
-  //   let params = new HttpParams();
-  //   if (id) {
-  //     params = params.append('id', id);
-  //   }
-  //   return this.http.get<Devices[]>(`${baseUrl + `/myDevice`}`, { params });
-  // }
 
 }

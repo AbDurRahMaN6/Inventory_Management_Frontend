@@ -91,12 +91,9 @@ export class DevicesDetailsComponent implements OnInit {
       model: this.currentDevice.model,
       type: this.currentDevice.deviceType,
       username: this.currentDevice.username,
-      // username: this.usersList.username,
       available: status
     };
-    const usersLog= {
-      username : this.usersList.username
-    }
+    
 
     this.message = '';
 
@@ -110,29 +107,10 @@ export class DevicesDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
 
-      // this.usersDetailsListServices.updateUsersDetailsList(this.usersList.id, usersLog)
-      // .subscribe({
-      //   next: (res) => {
-      //     console.log(res);
-      //     this.currentDevice.available = status;
-      //     this.message = res.message ? res.message : 'The status was updated successfully!';
-      //   },
-      //   error: (e) => console.error(e)
-      // });
   }
 
   updateDevice(): void {
     this.message = '';
-
-    // this.usersDetailsListServices.updateUsersDetailsList(this.usersList.id, this.usersList).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //     this.message = res.message ? res.message: 'This User was updated';
-    //   },
-    //   error: (e) => console.error(e)
-    // })
-
-  
 
     this.devicesService.update(this.currentDevice.id, this.currentDevice)
       .subscribe({

@@ -1,28 +1,6 @@
 
   <div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mt-5 mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search the Devices"
-          [(ngModel)]="model"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            (click)="searchDevice()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 mt-5">
-      <button type="button" class="btn btn-success ml-5" routerLink="myDevice">Show My Device</button>
-
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-5">
       <h4>Devices List</h4>
       <ul class="list-group">
         <li
@@ -37,8 +15,13 @@
           <br />
           <strong>DeviceType: </strong>{{ device.deviceType}}
           <br />
-          <strong>Status: </strong>{{ currentDevice.available ? "Available" : "Not Available" }}
+          <strong>Status: </strong>{{ device.available ? "Available" : "Not Available" }}
+          <br />
+          <strong>User of Device: </strong> <b style="color: #FF0000;">{{ device.username  }}</b>
         </li>
       </ul>
+    </div>
+    <div class="col-md-3 mt-5">
+      <button type="button" class="btn btn-success ml-5" routerLink="myDevice">Show My Device</button>
     </div>
   </div>
