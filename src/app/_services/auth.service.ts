@@ -34,7 +34,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // Implement your login check logic here
-    return true; // For demo purposes, always return true
+    return true; 
   }
 }

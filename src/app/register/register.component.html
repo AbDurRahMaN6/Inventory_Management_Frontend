@@ -87,7 +87,7 @@
             #rolling="ngModel"
             >
               <option value="" disabled selected>Select your option</option>
-              <option value="manager">Manager</option>
+              <option value="manager">User</option>
             </select>
             <div class="alert-danger" *ngIf="f.submitted && rolling.invalid">
               <div *ngIf="rolling.errors?.['required']">Role is required</div>
@@ -107,8 +107,5 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>

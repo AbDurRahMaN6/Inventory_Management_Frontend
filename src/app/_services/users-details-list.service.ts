@@ -80,13 +80,5 @@ export class UsersDetailsListService {
     return this.http.delete(`${baseUrl+ `admin/users`}/${id}`);
   }
 
-  getAvailableDevices(id: any): Observable<Devices[]> {
-    let params = new HttpParams();
-    if (id) {
-      params = params.append('id', id);
-    }
-    return this.http.get<Devices[]>(`${baseUrl + `user/myDevice`}`, { params });
-  }
-
   
 }

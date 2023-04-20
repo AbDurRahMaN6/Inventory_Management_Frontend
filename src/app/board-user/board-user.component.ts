@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Devices } from '../models/devices.model';
-import { UserDevices } from '../models/userDevices.model';
 import { DevicesService } from '../_services/devices.service';
 import { UserDevicesService } from '../_services/user-devices.service';
 

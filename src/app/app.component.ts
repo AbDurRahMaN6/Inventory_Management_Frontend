@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from './_services/storage.service';
-// import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -43,22 +42,4 @@ export class AppComponent implements OnInit {
     this.storageService.signOut();
     window.location.reload();
   }
-
-  // logout(){
-  //   Swal.fire({
-  //     title: 'Logout',
-  //     text: 'Are you sure!',
-  //     icon: 'info',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Logout',
-  //     cancelButtonText: 'Stay Login',
-  //   }).then((result) => {
-
-  //     if (result.isConfirmed) {
-  //       this.storageService.signOut();
-  //       this.router.navigate(['/']);
-
-  //     }
-  //   })
-  // }
 }
