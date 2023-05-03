@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Devices } from '../models/devices.model';
 import { UserDevicesService } from '../_services/user-devices.service';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-my-devices',
@@ -13,7 +14,7 @@ export class MyDevicesComponent implements OnInit {
   currentIndex = -1;
   model = '';
 
-  constructor(private userDevicesService: UserDevicesService) {}
+  constructor(private userDevicesService: UserDevicesService, private storageService: StorageService) {}
 
   ngOnInit() {
     this.usersGetDevices();
@@ -38,5 +39,10 @@ export class MyDevicesComponent implements OnInit {
   setActiveUsersDevices(userDevice: Devices, index: number): void {
     this.currentDevice = userDevice;
     this.currentIndex = -1;
+  }
+
+  logout(): void {
+    this.storageService.signOut();
+    window.location.reload();
   }
 }

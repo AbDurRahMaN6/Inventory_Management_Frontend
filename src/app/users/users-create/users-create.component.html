@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
+
+<div class="container">
+    <div class="col-6">
+      <div class="col-md-12">
+        <div class="card card-container">
+          <form
+            *ngIf="!isUsersSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && saveUsers()"
+            #f="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="form.username"
+                required
+                minlength="3"
+                maxlength="20"
+                #username="ngModel"
+                placeholder="Enter your username"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors?.['required']">
+                  Username is required
+                </div>
+                <div *ngIf="username.errors?.['minlength']">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors?.['maxlength']">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                email
+                #email="ngModel"
+                placeholder="Enter your email"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="8"
+                maxlength="20"
+                #password="ngModel"
+                placeholder="Enter your password"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors?.['required']">
+                  Password is required
+                </div>
+                <div *ngIf="password.errors?.['minlength']">
+                  Password must be at least 8 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="confirm_password"
+                [(ngModel)]="form.confirm_password"
+                required
+                minlength="8"
+                maxlength="20"
+                #confirm_password="ngModel"
+                placeholder="Enter your confirm password"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && confirm_password.invalid">
+                <div *ngIf="confirm_password.errors?.['required']">
+                  Confirm Password is required
+                </div>
+                <div *ngIf="confirm_password.errors?.['minlength']">
+                  Password must be at least 8 characters
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group" style="margin-top: 20px">
+              <button class="btn btn-primary btn-block">Create User</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isUserFailed">
+              Created failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+  
+          <div class="alert alert-success" *ngIf="isUsersSuccessful">
+            Your Create User is successful!
+          </div>
+          <button type="button" class="btn btn-info" routerLink="/manager">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -23,20 +23,35 @@
     <button type="button" class="btn btn-info mr-2" routerLink="../">Back</button>
     <button type="button" class="btn btn-success" routerLink="addUser">Create User</button>
   </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
+      
       <h4>Users List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let user of usersDetails; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveUsersDetails(user, i)"
-        >
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usersDetails; let i = index" [class.active]="i == currentIndex"
+          
+          >
+        <td>
           <strong><label>{{ user.username }}</label></strong>
-          <br />
-          {{ user.email }}
-        </li>
-      </ul>
+        </td>
+      <td>
+        {{ user.email }}
+      </td>
+      <td>
+        <button (click)="deleteUserDetails()" class="btn btn-danger">Delete</button>
+        <button style='margin-right:16px' class="btn btn-success" style="margin-left: 10px">Edit details</button>
+
+      </td>
+    </tr>
+        </tbody>
+      </table>
     </div>
     
     <div class="col-md-4 mt-5">

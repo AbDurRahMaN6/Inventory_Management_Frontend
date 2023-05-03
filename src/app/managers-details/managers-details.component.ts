@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UsersList } from '../models/usersList.model';
 import { ManagersDetailsListService } from '../_services/managers-details-list.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-managers-details',
@@ -21,7 +22,7 @@ export class ManagersDetailsComponent implements OnInit {
 
   message = '';
 
-  constructor (private managersDetailsService: ManagersDetailsListService, private route: ActivatedRoute, private router: Router) {}
+  constructor (private managersDetailsService: ManagersDetailsListService, private route: ActivatedRoute, private router: Router, private storageService: StorageService) {}
 
 
   ngOnInit(): void {
@@ -66,6 +67,13 @@ export class ManagersDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+  logout(): void {
+    this.storageService.signOut();
+    window.location.reload();
+  }
+
+
 
 
 }

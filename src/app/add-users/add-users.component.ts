@@ -12,12 +12,13 @@ export class AddUsersComponent implements OnInit {
   isUsersSuccessful = false;
   isUserFailed = false;
   errorMessage = '';
+  confirm_password? : string;
 
   users: UsersList = {
     username: '',
     email: '',
     password: '',
-    roles: '',
+    confirm_password: '',
   };
   submitted = false;
 
@@ -37,6 +38,13 @@ export class AddUsersComponent implements OnInit {
         this.isUserFailed = true;
       }
     );
+
+    if (this.users.password !== this.confirm_password) {
+      alert('Passwords do not match!');
+      return;
+    }
   }
+
+  
 
 }

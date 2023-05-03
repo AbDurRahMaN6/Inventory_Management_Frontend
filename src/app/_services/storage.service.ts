@@ -7,6 +7,9 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class StorageService {
+  clean() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
 

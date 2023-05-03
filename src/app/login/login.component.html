@@ -23,9 +23,11 @@
               type="text"
               class="form-control"
               name="username"
+              id="username"
               [(ngModel)]="form.username"
               required
               #username="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
             />
             <div
               class="alert alert-danger"
@@ -42,6 +44,7 @@
               class="form-control"
               name="password"
               [(ngModel)]="form.password"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
               required
               minlength="8"
               maxlength="20"
@@ -73,10 +76,7 @@
             </div>
           </div>
         </form>
-    
-        <div class="alert alert-success" *ngIf="isLoggedIn">
-          Logged in as {{ roles }}.
-        </div>
+
       </div>
     </div>
   </div>

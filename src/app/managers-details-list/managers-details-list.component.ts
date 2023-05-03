@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersList } from '../models/usersList.model';
 import { ManagersDetailsListService } from '../_services/managers-details-list.service';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-managers-details-list',
@@ -13,7 +14,7 @@ export class ManagersDetailsListComponent implements OnInit {
   currentManagers: UsersList = {};
   currentIndex = -1;
   model = '';
-  constructor(private managersDetailsListService: ManagersDetailsListService){}
+  constructor(private managersDetailsListService: ManagersDetailsListService, private storageService: StorageService){}
   ngOnInit(): void {
     this.retrieveManagers()
   }
@@ -32,6 +33,11 @@ export class ManagersDetailsListComponent implements OnInit {
   setActivemanagers(manager: UsersList, index: number): void {
     this.currentManagers = manager;
     this.currentIndex = index;
+  }
+
+  logout(): void {
+    this.storageService.signOut();
+    window.location.reload();
   }
 
   

@@ -1,3 +1,5 @@
+
+
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentManagerList.id">
       <h4>Managers Details</h4>
@@ -10,12 +12,12 @@
       </div>
       
   
-      <a
-        class="badge badge-warning"
+      <button
+      type="button" class="btn btn-warning"
         routerLink="/admin/managers/{{ currentManagerList.id }}"
       >
         Edit
-      </a>
+    </button>
     </div>
   
     <div *ngIf="!currentManagerList">
@@ -51,14 +53,13 @@
       </form>
   
   
-      <button class="badge badge-danger mr-2" (click)="deleteManagerList()">
+      <button type="button" class="btn btn-danger mr-2" (click)="deleteManagerList()">
         Delete
       </button>
       
     
       <button
-        type="submit"
-        class="badge badge-success mb-2"
+        type="button" class="btn btn-success"
         (click)="updateManagersList()"
       >
         Update
@@ -66,8 +67,7 @@
       <p>{{ message }}</p>
   
       <button
-        type="submit"
-        class="badge badge-info mb-2"
+      type="button" class="btn btn-info mb-2"
         routerLink="../"
       >
         Back

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Devices } from '../models/devices.model';
 import { DevicesService } from '../_services/devices.service';
 import { UserDevicesService } from '../_services/user-devices.service';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-board-user',
@@ -16,7 +17,7 @@ export class BoardUserComponent implements OnInit {
   currentIndex = -1;
   model = '';
 
-  constructor(private devicesService: DevicesService, private userDevicesService: UserDevicesService) { }
+  constructor(private devicesService: DevicesService, private userDevicesService: UserDevicesService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.retrieveDevices();
@@ -56,6 +57,11 @@ export class BoardUserComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  logout(): void {
+    this.storageService.signOut();
+    window.location.reload();
   }
 
 }

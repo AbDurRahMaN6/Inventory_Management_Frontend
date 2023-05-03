@@ -1,0 +1,131 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="/manager" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
+
+
+<div class="container">
+  <div class="card card-container mt-5">
+    <h3>Create Devices</h3>
+    <div [hidden]="submitted">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-5" style="margin-left: 20px">
+            <label for="name">Serial ID</label>
+            <input
+              type="text"
+              class="form-control"
+              id="serialId"
+              required
+              [(ngModel)]="device.serialId"
+              name="serialId"
+              placeholder="Select a Serial ID"
+            />
+          </div>
+          <div class="form-group col-5">
+            <label for="name">Model</label>
+            <input
+              type="text"
+              class="form-control"
+              id="model"
+              required
+              [(ngModel)]="device.model"
+              name="model"
+              placeholder="Select a Model"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-5" style="margin-left: 20px">
+            <label for="name">Status</label>
+            <select
+              type="text"
+              class="form-control"
+              id="status"
+              required
+              [(ngModel)]="device.status"
+              name="status"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="ASSIGNED">ASSIGNED</option>
+              <option value="NOT_ASSIGNED">NOT_ASSIGNED</option>
+              <option value="DAMAGED">DAMAGED</option>
+              <option value="OUTDATED">OUTDATED</option>
+              <option value="DELETED">DELETED</option>
+            </select>
+          </div>
+          <div class="form-group col-5" style="margin-left: 20px">
+            <label for="name">Device Type</label>
+            <select
+              type="text"
+              class="form-control"
+              id="deviceType"
+              required
+              [(ngModel)]="device.deviceType"
+              name="deviceType"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="LAPTOP">LAPTOP</option>
+              <option value="TABLET">TABLET</option>
+              <option value="DESKTOP">DESKTOP</option>
+              <option value="SMARTPHONE">SMARTPHONE</option>
+              <option value="IPAD">IPAD</option>
+              <option value="CPU">CPU</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-5">
+            <label for="name">Device Status</label>
+            <select
+              type="text"
+              class="form-control"
+              id="deviceStatus"
+              required
+              [(ngModel)]="device.deviceStatus"
+              name="deviceStatus"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="USED">USED</option>
+              <option value="NEW">NEW</option>
+            </select>
+          </div>
+
+          <div class="form-group col-5">
+            <label for="name">Select Opearting System</label>
+            <select
+              type="text"
+              class="form-control"
+              id="operatingSystem"
+              required
+              [(ngModel)]="device.operatingSystem"
+              name="operatingSystem"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="WINDOWS">WINDOWS</option>
+              <option value="LINUX">LINUX</option>
+              <option value="IOS">IOS</option>
+              <option value="ANDROID">ANDROID</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-success ml-3 mt-2 mb-3">Submit</button>
+      </form>
+
+      <div class="addBtn">
+        <button type="button" class="btn btn-info" routerLink="../">Back</button>
+        <button type="button" class="btn btn-primary" routerLink="../devices">Go to List</button>
+      </div>
+    </div>
+  </div>
+</div>

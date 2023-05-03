@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
+
+<div class="list row mt-3">
+    <div class="col-md-6">
+      <div class="input-group mt-5 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search the Username"
+          [(ngModel)]="model"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="searchUserName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+  
+    </div>
+    <div class="col-md-5 mt-5">
+      <button type="button" class="btn btn-info mr-2" routerLink="../">Back</button>
+      <button type="button" class="btn btn-success" routerLink="addUser">Create User</button>
+    </div>
+      <div class="col-md-8">
+        
+        <h4>Users List</h4>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th >Username</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usersDetails">
+          <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="deleteUserDetails(user.id)" class="btn btn-danger">Delete</button>
+          <button (click)="updateUser(user.id)"  style='margin-right:16px' class="btn btn-success" style="margin-left: 10px">Edit details</button>
+  
+        </td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="col-md-4 mt-5">
+          <app-users-details
+          [viewMode]="true"
+          [currentUsers]="currentUsers">
+          </app-users-details>
+      </div>
+    </div>

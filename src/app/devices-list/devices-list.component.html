@@ -1,42 +1,167 @@
-<div class="list row">
+<!-- <div class="list row" *ngIf="editable"> -->
   <div class="col-md-8">
     <div class="input-group mt-5 mb-3">
-      <input
+      <!-- <input
         type="text"
         class="form-control"
         placeholder="Search the Devices"
         [(ngModel)]="model"
-      />
-      <div class="input-group-append">
+      /> -->
+      <!-- <div class="input-group-append">
         <button
           class="btn btn-outline-secondary"
           (click)="searchDevice()"
         >
           Search
         </button>
-      </div>
-      <button type="button" class="btn btn-success ml-5" routerLink="../addDevices">Add Devices</button>
-      <button type="button" class="btn btn-info ml-2" routerLink="..">Back</button>
+      </div> -->
+      <!-- <button type="button" class="btn btn-success ml-5" routerLink="../addDevices">Add Devices</button>
+      <button type="button" class="btn btn-info ml-2" routerLink="..">Back</button> -->
     </div>
   </div>
-  <div class="col-md-8">
-    <h4>Devices List</h4>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let device of devices; let i = index"
-        [class.active]="i == currentIndex"
-        (click)="setActiveDevices(device, i)"
-      >
-        {{ device.model }} - <strong><label>{{ device.deviceType }}</label></strong>
-      </li>
-    </ul>
+
+  <div class="col-md-12">
+    <h3>Devices List</h3>
+    <table class="table">
+      <thead class="thead-dark">
+        <!-- <tr>
+          <th scope="col">Serial ID</th>
+          <th scope="col">Model</th>
+          <th scope="col">Device Type</th>
+          <th scope="col">Device Status</th>
+          <th scope="col">Status</th>
+          <th scope="col">Device User</th>
+          <th scope="col">Action</th>
+        </tr> -->
+      </thead>
+      <!-- <tbody>
+        <tr *ngFor="let device of devices let i = index let users " [class.active]="i == currentIndex">
+          <td>{{ device.serialId }}</td>
+          <td>{{ device.model }}</td>
+          <td>{{ device.deviceType }}</td>
+          <td>{{ device.deviceStatus }}</td>
+          <td>{{ currentDevice.available ? "Available" : "Not Available" }}</td>
+          <td>{{ currentDevice.username }}</td> -->
+          <!-- <td><button routerLink="/manager/devices/">{{ currentDevice.id }}</button></td> -->
+          <!-- <td><button (click)="deleteDevice()" class="btn btn-danger">Delete</button>
+            <button routerLink="/manager/devices/update/:id" class="btn btn-info" style="margin-left: 10px">Edit</button>
+        </td>
+        </tr>
+      </tbody> -->
+    </table>
   </div>
-  <div class="col-md-4 mt-5">
+
+  
+
+
+  <!-- <div class="col-md-4 mt-5">
     <app-devices-details
       [viewMode]="true"
       [currentDevice]="currentDevice"
     >
   </app-devices-details>
+  </div> -->
+<!-- </div> -->
+
+<!-- <ng-template #editable>
+  <div *ngIf="currentDevice.id" class="edit-form">
+    <strong><h3>Devices Details</h3></strong>
+    <form>
+      <div class="form-group">
+        <label for="model">Serial ID</label>
+        <input
+          type="text"
+          class="form-control"
+          id="serialId"
+          [(ngModel)]="currentDevice.serialId"
+          name="serialId"
+        />
+      </div>
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          [(ngModel)]="currentDevice.model"
+          name="model"
+        />
+      </div>
+      <div class="form-group">
+        <label for="deviceType">Device Type</label>
+        <input
+          type="text"
+          class="form-control"
+          id="deviceType"
+          [(ngModel)]="currentDevice.deviceType"
+          name="deviceType"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label>Select Users</label>
+        <select 
+            class="form-control" 
+            id="username" 
+            [(ngModel)]="currentDevice.username" 
+            name="username"  
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option class="list-group-item" *ngFor="let user of usersDetails; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="setActiveUsersDetails(user, i)">
+              {{ user.username }}</option>
+            </select>
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentDevice.available ? "Available" : "Not Available" }}
+      </div>
+
+      
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentDevice.available"
+      (click)="updateAvailable(false)"
+    >
+      Not Available
+    </button>
+    <button
+      *ngIf="!currentDevice.available"
+      class="badge badge-primary mr-2"
+      (click)="updateAvailable(true)"
+    >
+    Available
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteDevice()">
+      Delete
+    </button>
+    
+  
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateDevice()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+
+    <button
+      type="submit"
+      class="badge badge-info mb-2"
+      routerLink="../"
+    >
+      Back
+    </button>
   </div>
-</div>
+
+  <div *ngIf="!currentDevice.id">
+    <br />
+    <p>Cannot access this Device...</p>
+  </div>
+</ng-template> -->

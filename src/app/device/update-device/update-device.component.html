@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="/manager" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
+
+<h3>
+    Update Devices
+  </h3>
+    <form (ngSubmit)="onSubmit()">
+ 
+  <div class="form-group">
+    <label for="name">Model</label>
+            <input
+              type="text"
+              class="form-control"
+              id="model"
+              required
+              [(ngModel)]="device.model"
+              name="model"
+              placeholder="Select a Model"
+            />
+  
+  </div>
+  <div class="form-group">
+    <label for="name">Device Type</label>
+            <select 
+              type="text"
+              class="form-control"
+              id="deviceType"
+              required
+              [(ngModel)]="device.deviceType"
+              name="deviceType"
+              aria-label="Default select example"
+              
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="LAPTOP">LAPTOP</option>
+              <option value="TABLET">TABLET</option>
+              <option value="DESKTOP">DESKTOP</option>
+              <option value="SMARTPHONE">SMARTPHONE</option>
+              <option value="IPAD">IPAD</option>
+              <option value="CPU">CPU</option>
+            </select>
+  
+  </div>
+
+  <div class="form-group">
+    <label for="name">Device Status</label>
+            <select
+              type="text"
+              class="form-control"
+              id="deviceStatus"
+              required
+              [(ngModel)]="device.deviceStatus"
+              name="deviceStatus"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="USED">USED</option>
+              <option value="NEW">NEW</option>
+            </select>
+  
+  </div>
+
+  <div class="form-group">
+    <label for="name">Select Opearting System</label>
+            <select
+              type="text"
+              class="form-control"
+              id="operatingSystem"
+              required
+              [(ngModel)]="device.operatingSystem"
+              name="operatingSystem"
+              aria-label="Default select example"
+            >
+              <option value="" disabled selected>Select your option</option>
+              <option value="WINDOWS">WINDOWS</option>
+              <option value="LINUX">LINUX</option>
+              <option value="IOS">IOS</option>
+              <option value="ANDROID">ANDROID</option>
+            </select>
+  
+  </div>
+
+  <div class="form-group">
+    <label>Select Users</label>
+    <select 
+        class="form-control" 
+        id="username" 
+        [(ngModel)]="currentDevice.username" 
+        name="username"  
+        >
+          <option value="" disabled selected>Select your option</option>
+          <option class="list-group-item" *ngFor="let user of usersDetails; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUsersDetails(user, i)">
+          {{ user.username }}</option>
+        </select>
+  </div>
+
+
+  <!-- <div class="form-group">
+    <label>Select Users</label>
+    <select 
+        class="form-control" 
+        id="username" 
+        [(ngModel)]="device.username" 
+        name="username"  
+        >
+          <option value="" disabled selected>Select your option</option>
+          <option class="list-group-item" *ngFor="let user of usersDetails; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUsersDetails(user, i)"> 
+          {{ user.username }}</option> 
+        </select>
+  </div> -->
+  <button style='margin-right:16px' class="btn btn-success">Submit</button>
+  <button style='margin-right:16px' (click)="goToDeviceList()" class="btn btn-success">Back to Devices</button>
+  
+  </form>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UsersList } from '../models/usersList.model';
 import { UsersDetailsListService } from '../_services/users-details-list.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-users-admin-details',
@@ -25,7 +26,8 @@ export class UsersAdminDetailsComponent implements OnInit {
   constructor(
     private userDetailsService: UsersDetailsListService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private storageService: StorageService) { }
 
   ngOnInit(): void {
     if (!this.viewMode) {
@@ -68,6 +70,11 @@ export class UsersAdminDetailsComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  logout(): void {
+    this.storageService.signOut();
+    window.location.reload();
   }
 
 }

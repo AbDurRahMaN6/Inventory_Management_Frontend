@@ -56,6 +56,17 @@ export class UsersDetailsListComponent implements OnInit {
       });
   }
 
+  deleteUserDetails(): void {
+    if(confirm('Are you Delete this User?'))
+    this.userDetailsService.deleteUsers(this.currentUsers.id)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
   
 
 }

@@ -1,4 +1,13 @@
-
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
   <div class="list row">
     <div class="col-md-6 mt-5">
       <h4>Devices List</h4>
@@ -15,7 +24,7 @@
           <br />
           <strong>DeviceType: </strong>{{ device.deviceType}}
           <br />
-          <strong>Status: </strong>{{ device.available ? "Available" : "Not Available" }}
+          <!-- <strong>Status: </strong>{{ device.available ? "Available" : "Not Available" }} -->
           <br />
           <strong>User of Device: </strong> <b style="color: #FF0000;">{{ device.username  }}</b>
         </li>

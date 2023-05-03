@@ -18,7 +18,7 @@ export class AddDevicesComponent implements OnInit {
     serialId: '',
     model: '',
     deviceType: '',
-    available: false
+    // available: false
   };
   submitted = false;
 
@@ -48,7 +48,7 @@ export class AddDevicesComponent implements OnInit {
       serialId:'',
       model: '',
       deviceType: '',
-      available: false
+      // available: false
     };
   }
 

@@ -1,3 +1,5 @@
+
+
 export class Devices {
     id?: any;
     serialId?: string;
@@ -5,4 +7,7 @@ export class Devices {
     deviceType?: string;
     available?: boolean;
     username?: string;
+    status?: string;
+    deviceStatus?: string;
+    operatingSystem?: string;
 }

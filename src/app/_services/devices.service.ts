@@ -23,8 +23,11 @@ export class DevicesService {
     return this.http.get<Devices>(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  // create(data: any): Observable<any> {
+  //   return this.http.post(baseUrl, data);
+  // }
+  create(devices: Devices): Observable<any> {
+    return this.http.post(baseUrl, devices);
   }
 
   update(id: any, data: any): Observable<any> {

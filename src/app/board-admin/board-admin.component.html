@@ -1,6 +1,17 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="" class="navbar-brand">AR Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <form class="d-flex" >
+            <button class="btn btn-outline-success" style="margin-left: 700px;" (click)="logout()">Logout</button>
+          </form>
+        </div>
+  </nav>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <div class="card" style="width: 18rem">
         <img
           class="card-img-top"
@@ -12,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <div class="card" style="width: 18rem">
         <img
           class="card-img-top"
@@ -21,6 +32,18 @@
         />
         <div class="card-body">
           <button class="btn btn-danger" routerLink="managers">Check Manager</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="https://thumbnail.imgbin.com/22/11/20/imgbin-manager-management-free-content-office-manager-s-0k045TmKFQ8RXwsKKpdz6pB0m_t.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <button class="btn btn-danger" routerLink="addManagers">Create User</button>
         </div>
       </div>
     </div>

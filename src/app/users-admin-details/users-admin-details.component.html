@@ -1,3 +1,4 @@
+
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentUsers.id">
       <h4>Users Details</h4>
@@ -10,12 +11,12 @@
       </div>
       
   
-      <a
-        class="badge badge-warning"
+      <button
+      button type="button" class="btn btn-warning"
         routerLink="/admin/users/{{ currentUsers.id }}"
       >
         Edit
-      </a>
+      </button>
     </div>
   
     <div *ngIf="!currentUsers">
@@ -50,14 +51,13 @@
         </div>
       </form>
   
-      <button class="badge badge-danger mr-2" (click)="deleteAdminUserDetails()">
+      <button button type="button" class="btn btn-danger mr-2" (click)="deleteAdminUserDetails()">
         Delete
       </button>
       
     
       <button
-        type="submit"
-        class="badge badge-success mb-2"
+        type="button" class="btn btn-success"
         (click)="updateAdminUserDetails()"
       >
         Update
@@ -65,8 +65,8 @@
       <p>{{ message }}</p>
   
       <button
-        type="submit"
-        class="badge badge-info mb-2"
+        type="button"
+        class="btn btn-info"
         routerLink="../"
       >
         Back

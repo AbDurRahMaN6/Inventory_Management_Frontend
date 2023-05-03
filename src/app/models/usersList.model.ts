@@ -5,4 +5,5 @@ export class UsersList {
     password?: string;
     roles?: string;
     rolling?: string;
+    confirm_password?: string;
 }

@@ -35,6 +35,16 @@ import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { AuthGuard } from './_services/guard/auth.guard';
 import { UsersAdminDetailsListComponent } from './users-admin-details-list/users-admin-details-list.component';
+import { CreateDeviceComponent } from './device/create-device/create-device.component';
+import { UpdateDeviceComponent } from './device/update-device/update-device.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
+import { AddManagersComponent } from './add-managers/add-managers.component';
+import { UsersListsComponent } from './users/users-lists/users-lists.component';
+import { UsersCreateComponent } from './users/users-create/users-create.component';
+import { UsersUpdateComponent } from './users/users-update/users-update.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -61,7 +71,17 @@ import { UsersAdminDetailsListComponent } from './users-admin-details-list/users
     UsersAdminDetailsComponent,
     MyDevicesComponent,
     AddUsersComponent,
-    UsersAdminDetailsListComponent,    
+    UsersAdminDetailsListComponent,
+    CreateDeviceComponent,
+    UpdateDeviceComponent,
+    DeviceListComponent,
+    AddManagersComponent,
+    UsersListsComponent,
+    UsersCreateComponent,
+    UsersUpdateComponent,
+   
+
+    
   ],
   imports: [
     BrowserModule,

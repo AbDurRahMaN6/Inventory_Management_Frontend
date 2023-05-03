@@ -25,7 +25,7 @@ export class DevicesDetailsComponent implements OnInit {
     serialId:'',
     model: '',
     deviceType: '',
-    available: false,
+    // available: false,
     username: ''
   };
 
@@ -91,7 +91,7 @@ export class DevicesDetailsComponent implements OnInit {
       model: this.currentDevice.model,
       type: this.currentDevice.deviceType,
       username: this.currentDevice.username,
-      available: status
+      status: this.currentDevice.status,
     };
     
 
@@ -101,7 +101,7 @@ export class DevicesDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.currentDevice.available = status;
+          // this.currentDevice.available = status;
           this.message = res.message ? res.message : 'The status was updated successfully!';
         },
         error: (e) => console.error(e)
